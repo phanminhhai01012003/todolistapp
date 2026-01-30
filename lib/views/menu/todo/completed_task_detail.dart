@@ -43,7 +43,6 @@ class _CompletedTaskDetailState extends State<CompletedTaskDetail> {
       body: SingleChildScrollView(
         padding: EdgeInsets.all(20),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Info(
               title: "Title:", 
@@ -57,7 +56,7 @@ class _CompletedTaskDetailState extends State<CompletedTaskDetail> {
             SizedBox(height: 20),
             Info(
               title: "Start Date:", 
-              info: DateFormat("dd/mm/yyyy").format(widget.todo.startDate)
+              info: DateFormat("dd/MM/yyyy").format(widget.todo.startDate)
             ),
             SizedBox(height: 20),
             Row(

@@ -52,7 +52,6 @@ class _ProgressTaskDetailState extends State<ProgressTaskDetail> {
       body: SingleChildScrollView(
         padding: EdgeInsets.all(20),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Info(
               title: "Title:", 
@@ -66,7 +65,7 @@ class _ProgressTaskDetailState extends State<ProgressTaskDetail> {
             SizedBox(height: 20),
             Info(
               title: "Start Date:", 
-              info: DateFormat("dd/mm/yyyy").format(widget.todo.startDate)
+              info: DateFormat("dd/MM/yyyy").format(widget.todo.startDate)
             ),
             SizedBox(height: 20),
             Row(
