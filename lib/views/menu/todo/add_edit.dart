@@ -32,7 +32,7 @@ class _AddEditState extends State<AddEdit> {
     if (widget.todo != null) {
       titleController.text = widget.todo!.title;
       descriptionController.text = widget.todo!.description;
-      dateController.text = DateFormat('dd/MM/yyyy').format(widget.todo!.endDate);
+      dateController.text = DateFormat('dd-MM-yyyy').format(widget.todo!.endDate);
     }
   }
   @override
@@ -226,13 +226,19 @@ class _AddEditState extends State<AddEdit> {
                     backgroundColor: Commoncolor.blue,
                     foregroundColor: Commoncolor.white
                   ),
-                  onPressed: (){
+                  onPressed: () async{
                     setState(() {
                       isLoading = true;
                     });
                     if (titleController.text.isEmpty) {
-                      Message.showMessage(context, "Task title is required", Commoncolor.red);
-                    }
+                      await Future.delayed(Duration(seconds: 2), (){
+                        Message.showMessage(context, "Task title is required", Commoncolor.red);
+                        setState(() {
+                          isLoading = false;
+                        });
+                      });
+                      return;
+                    }   
                     TodoModel todo = TodoModel(
                       todoId: widget.todo == null ? DateTime.now().millisecondsSinceEpoch.toString() : widget.todo!.todoId, 
                       userId: widget.todo == null ? _currentUser.uid : widget.todo!.userId, 
@@ -242,16 +248,11 @@ class _AddEditState extends State<AddEdit> {
                       endDate: DateFormat('dd-MM-yyyy').parse(dateController.text), 
                       status: "Progress",
                     );
-                    if (widget.todo == null){
-                      services.addTask(todo);
-                      Message.showMessage(context, "New task has been created", Commoncolor.green);
-                    }else{
-                      services.updateTask(todo);
-                      Message.showMessage(context, "Task has been updated", Commoncolor.green);
-                    }
+                    widget.todo == null ? services.addTask(todo) : services.updateTask(todo);
                     setState(() {
                       isLoading = false;
                     });
+                    Message.showMessage(context, widget.todo == null ? "New task has been created" : "Task has been updated", Commoncolor.green);                 
                     Navigator.pop(context);
                   }, 
                   child: isLoading 

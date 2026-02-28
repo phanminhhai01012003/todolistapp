@@ -6,8 +6,8 @@ import 'package:todolistapp/views/menu/home/home_page.dart';
 import 'package:todolistapp/widget/message.dart';
 
 class HandleLogin {
-  final _auth = AuthServices();
-  void handle(BuildContext context, String email, String password) async{
+  static final _auth = AuthServices();
+  static void handle(BuildContext context, String email, String password) async{
     User? user = await _auth.login(context, email, password);
     if (user != null){
       Message.showMessage(context, "Login successful!", Commoncolor.green);

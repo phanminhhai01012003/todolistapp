@@ -206,7 +206,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                               isLoading = false;
                             });
                           }
-                          HandleChangePassword().handle(
+                          HandleChangePassword.handle(
                             context,
                             email: currentUser.email,
                             oldPassword: oldPassword,

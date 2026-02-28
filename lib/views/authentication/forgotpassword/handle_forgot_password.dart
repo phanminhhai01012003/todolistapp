@@ -4,8 +4,8 @@ import 'package:todolistapp/services/auth/auth_services.dart';
 import 'package:todolistapp/widget/message.dart';
 
 class HandleForgotPassword {
-  final _auth = AuthServices();
-  void handle(BuildContext context, String email) async {
+  static final _auth = AuthServices();
+  static void handle(BuildContext context, String email) async {
     await _auth.resetPassword(context, email);
     Message.showMessage(context, "A password reset link sent to your email", Commoncolor.green);
     Navigator.pop(context);

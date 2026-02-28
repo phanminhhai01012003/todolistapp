@@ -233,7 +233,7 @@ class _RegisterState extends State<Register> {
                           setState(() {
                             isLoading = false;
                           });
-                          HandleRegister().handle(context, avatar, name, email, password);
+                          HandleRegister.handle(context, avatar, name, email, password);
                         }
                       }                      
                     },

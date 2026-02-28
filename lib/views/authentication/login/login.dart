@@ -155,7 +155,7 @@ class _LoginState extends State<Login> {
                         setState(() {
                           isLoading = true;
                         });
-                        HandleLogin().handle(context, email, password);
+                        HandleLogin.handle(context, email, password);
                         setState(() {
                           isLoading = false;
                         });

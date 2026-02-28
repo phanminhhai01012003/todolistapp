@@ -97,7 +97,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                         setState(() {
                           isLoading = true;
                         });
-                        HandleForgotPassword().handle(context, email);
+                        HandleForgotPassword.handle(context, email);
                         setState(() {
                           isLoading = false;
                         });

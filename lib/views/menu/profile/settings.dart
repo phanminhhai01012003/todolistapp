@@ -44,12 +44,11 @@ class _SettingsState extends State<Settings> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.r, vertical: 10.r),
+            padding: EdgeInsets.symmetric(horizontal: 16.r),
             child: ShowUserInform(),
           ),
-          SizedBox(height: 20),
           Divider(color: Commoncolor.grey, thickness: 1),
-          SizedBox(height: 30),
+          SizedBox(height: 20),
           Center(
             child: SizedBox(
               height: 50.h,
@@ -78,6 +77,28 @@ class _SettingsState extends State<Settings> {
               width: (MediaQuery.of(context).size.width * 0.75).w,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
+                  backgroundColor: Commoncolor.green,
+                  foregroundColor: Commoncolor.white
+                ),
+                onPressed: () {
+                  
+                },
+                child: Text("Change Theme",
+                  style: TextStyle(
+                    fontSize: 18.sp,
+                    fontWeight: FontWeight.w900
+                  ),
+                ),
+              ),
+            ),
+          ),
+          SizedBox(height: 15),
+          Center(
+            child: SizedBox(
+              height: 50.h,
+              width: (MediaQuery.of(context).size.width * 0.75).w,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
                   backgroundColor: Commoncolor.red,
                   foregroundColor: Commoncolor.white
                 ),
@@ -85,13 +106,13 @@ class _SettingsState extends State<Settings> {
                   Platform.isAndroid ? ShowDialog.showMaterialDialog(
                     context, 
                     title: "Log out", 
-                    content: "Do you want to log out", 
+                    content: "Do you want to log out?", 
                     onAcceptTap: () => handleLogout(context), 
                     onCancelTap: () => Navigator.pop(context)
                   ) : ShowDialog.showCupertinoDialog(
                     context, 
                     title: "Log out", 
-                    content: "Do you want to log out", 
+                    content: "Do you want to log out?", 
                     onAcceptTap: () => handleLogout(context), 
                     onCancelTap: () => Navigator.pop(context)
                   );

@@ -8,9 +8,9 @@ import 'package:todolistapp/views/menu/home/home_page.dart';
 import 'package:todolistapp/widget/message.dart';
 
 class HandleRegister {
-  final _auth = AuthServices();
-  final services = UserServices();
-  void handle(BuildContext context, String avatar, String username, String email, String password) async{
+  static final _auth = AuthServices();
+  static final services = UserServices();
+  static void handle(BuildContext context, String avatar, String username, String email, String password) async{
     User? user = await _auth.register(context, avatar, username, email, password);
     if (user != null) {
       UserModel userModel = UserModel(

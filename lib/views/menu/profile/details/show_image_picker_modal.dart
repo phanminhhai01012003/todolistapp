@@ -23,7 +23,6 @@ class ShowImagePickerModal extends StatefulWidget {
 
 class _ShowImagePickerModalState extends State<ShowImagePickerModal> {
   final imageService = StorageServices();
-  File? image;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -60,9 +59,7 @@ class _ShowImagePickerModalState extends State<ShowImagePickerModal> {
               onPressed: () async{
                 final picked = await imageService.pickImageFromCamera();
                 if (picked != null) {
-                  setState(() {
-                    image = picked;
-                  });
+                  Navigator.pop(context, picked);
                 }
               }, 
               child: Text("Take a photo", style: TextStyle(fontSize: 16))
@@ -81,9 +78,7 @@ class _ShowImagePickerModalState extends State<ShowImagePickerModal> {
               onPressed: () async{
                 final picked = await imageService.pickImageFromGallery();
                 if (picked != null) {
-                  setState(() {
-                    image = picked;
-                  });
+                  Navigator.pop(context, picked);
                 }
               }, 
               child: Text("Open from gallery", style: TextStyle(fontSize: 16))

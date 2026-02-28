@@ -50,18 +50,11 @@ class _ShowUserInformState extends State<ShowUserInform> {
               return GestureDetector(
                 onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => UserDetail(user: user))),
                 child: Container(
-                  margin: EdgeInsets.all(12),
+                  padding: EdgeInsets.all(8),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     color: Commoncolor.black,
-                    boxShadow: [
-                      BoxShadow(
-                        offset: Offset(0, 0),
-                        color: Commoncolor.white,
-                        blurRadius: 5,
-                        spreadRadius: 5
-                      )
-                    ]
+                    border: Border.all(color: Commoncolor.white)
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
