@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todolistapp/common/commoncolor.dart';
+import 'package:todolistapp/common/routes.dart';
 import 'package:todolistapp/services/auth/auth_services.dart';
 import 'package:todolistapp/views/authentication/changepassword/change_password.dart';
 import 'package:todolistapp/views/authentication/login/login.dart';
@@ -21,7 +22,7 @@ class _SettingsState extends State<Settings> {
   void handleLogout(BuildContext context) async{
     await _auth.logOut(context);
     Message.showMessage(context, "Logout successful, now return to login", Commoncolor.green);
-    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => Login()), (Route<dynamic> route) => false);
+    pushAndRemoveUntil(context, Login());
   }
   @override
   Widget build(BuildContext context) {
@@ -33,7 +34,7 @@ class _SettingsState extends State<Settings> {
         leading: Padding(
           padding: EdgeInsets.all(8),
           child: IconButton(
-            onPressed: () => Navigator.pop(context), 
+            onPressed: () => pop(context), 
             icon: Icon(Icons.arrow_back, size: 20)
           ),
         ),
@@ -59,7 +60,7 @@ class _SettingsState extends State<Settings> {
                   foregroundColor: Commoncolor.white
                 ),
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => ChangePassword()));
+                  push(context, ChangePassword());
                 },
                 child: Text("Change Password",
                   style: TextStyle(
@@ -83,7 +84,7 @@ class _SettingsState extends State<Settings> {
                 onPressed: () {
                   
                 },
-                child: Text("Change Theme",
+                child: Text("App Information",
                   style: TextStyle(
                     fontSize: 18.sp,
                     fontWeight: FontWeight.w900
@@ -108,13 +109,13 @@ class _SettingsState extends State<Settings> {
                     title: "Log out", 
                     content: "Do you want to log out?", 
                     onAcceptTap: () => handleLogout(context), 
-                    onCancelTap: () => Navigator.pop(context)
+                    onCancelTap: () => pop(context)
                   ) : ShowDialog.showCupertinoDialog(
                     context, 
                     title: "Log out", 
                     content: "Do you want to log out?", 
                     onAcceptTap: () => handleLogout(context), 
-                    onCancelTap: () => Navigator.pop(context)
+                    onCancelTap: () => pop(context)
                   );
                 },
                 child: Text("Logout",

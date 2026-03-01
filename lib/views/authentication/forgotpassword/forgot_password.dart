@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todolistapp/common/commoncolor.dart';
+import 'package:todolistapp/common/routes.dart';
 import 'package:todolistapp/views/authentication/forgotpassword/handle_forgot_password.dart';
 
 class ForgotPassword extends StatefulWidget {
@@ -23,7 +24,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
           leading: Padding(
             padding: const EdgeInsets.all(12),
             child: GestureDetector(
-              onTap: () => Navigator.pop(context),
+              onTap: () => pop(context),
               child: Icon(Icons.arrow_back,
                 color: Commoncolor.white,
                 size: 30,

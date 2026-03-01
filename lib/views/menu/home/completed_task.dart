@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:todolistapp/common/commoncolor.dart';
+import 'package:todolistapp/common/routes.dart';
 import 'package:todolistapp/models/todo.dart';
 import 'package:todolistapp/services/firestore/todo/todo_services.dart';
 import 'package:todolistapp/views/menu/todo/completed_task_detail.dart';
@@ -64,7 +65,7 @@ class _CompletedTaskState extends State<CompletedTask> {
             border: Border.all(color: Commoncolor.white),
           ),
           child: ListTile(
-            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => CompletedTaskDetail(todo: todo))),
+            onTap: () => push(context, CompletedTaskDetail(todo: todo)),
             title: Text(
               todo.title,
               style: TextStyle(
@@ -109,7 +110,7 @@ class _CompletedTaskState extends State<CompletedTask> {
       itemBuilder: (context, index) {
         TodoModel todo = todos[index];
         return GestureDetector(
-          onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => CompletedTaskDetail(todo: todo))),
+          onTap: () => push(context, CompletedTaskDetail(todo: todo)),
           child: Container(
             margin: EdgeInsets.all(10),
             decoration: BoxDecoration(

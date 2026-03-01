@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:todolistapp/common/commoncolor.dart';
+import 'package:todolistapp/common/routes.dart';
 import 'package:todolistapp/models/user.dart';
 import 'package:todolistapp/services/auth/auth_services.dart';
 import 'package:todolistapp/services/firestore/user/user_services.dart';
@@ -22,7 +23,7 @@ class HandleRegister {
       );
       await services.addUser(userModel);
       Message.showMessage(context, "Register successful!", Commoncolor.green);
-      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => HomePage()), (Route<dynamic> route) => false);
+      pushAndRemoveUntil(context, HomePage());
     }else{
       Message.showMessage(context, "Register failed!", Commoncolor.red);
     }

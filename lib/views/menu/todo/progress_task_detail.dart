@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:todolistapp/common/commoncolor.dart';
+import 'package:todolistapp/common/routes.dart';
 import 'package:todolistapp/models/todo.dart';
 import 'package:todolistapp/services/firestore/todo/todo_services.dart';
 import 'package:todolistapp/views/menu/todo/add_edit.dart';
@@ -23,14 +24,14 @@ class _ProgressTaskDetailState extends State<ProgressTaskDetail> {
   void delete(BuildContext context, String id) async{
     _service.deleteTask(id);
     Message.showMessage(context, "You have removed this task", Commoncolor.green);
-    Navigator.pop(context);
-    await Future.delayed(Duration(seconds: 2), () => Navigator.pop(context));
+    pop(context);
+    await Future.delayed(Duration(seconds: 2), () => pop(context));
   }
   void onCompletedTask() async{
     _service.updateTaskStatus(widget.todo.todoId, "Completed");
     Message.showMessage(context, "You have completed this task", Commoncolor.green);
-    Navigator.pop(context);
-    await Future.delayed(Duration(seconds: 2), () => Navigator.pop(context));
+    pop(context);
+    await Future.delayed(Duration(seconds: 2), () => pop(context));
   }
   @override
   Widget build(BuildContext context) {
@@ -42,7 +43,7 @@ class _ProgressTaskDetailState extends State<ProgressTaskDetail> {
         leading: Padding(
           padding: EdgeInsets.all(8),
           child: IconButton(
-            onPressed: () => Navigator.pop(context), 
+            onPressed: () => pop(context), 
             icon: Icon(Icons.arrow_back, size: 20)
           ),
         ),
@@ -136,7 +137,7 @@ class _ProgressTaskDetailState extends State<ProgressTaskDetail> {
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(33))
                 ),
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => AddEdit(todo: widget.todo)));
+                  push(context, AddEdit(todo: widget.todo));
                 },
                 child: Text("Edit task", style: TextStyle(fontSize: 18)),
               ),
@@ -157,13 +158,13 @@ class _ProgressTaskDetailState extends State<ProgressTaskDetail> {
                     title: "Delete Task", 
                     content: "Are you sure to delete this task?", 
                     onAcceptTap: () => delete(context, widget.todo.todoId), 
-                    onCancelTap: () => Navigator.pop(context)
+                    onCancelTap: () => pop(context)
                   ) : ShowDialog.showCupertinoDialog(
                     context, 
                     title: "Delete Task", 
                     content: "Are you sure to delete this task?", 
                     onAcceptTap: () => delete(context, widget.todo.todoId), 
-                    onCancelTap: () => Navigator.pop(context)
+                    onCancelTap: () => pop(context)
                   );
                 },
                 child: Text("Delete task", style: TextStyle(fontSize: 18)),
@@ -185,13 +186,13 @@ class _ProgressTaskDetailState extends State<ProgressTaskDetail> {
                     title: "Mark as completed", 
                     content: "Are you sure that you have completed this task?", 
                     onAcceptTap: onCompletedTask, 
-                    onCancelTap: () => Navigator.pop(context)
+                    onCancelTap: () => pop(context)
                   ) : ShowDialog.showCupertinoDialog(
                     context, 
                     title: "Mark as completed", 
                     content: "Are you sure that you have completed this task?", 
                     onAcceptTap: onCompletedTask, 
-                    onCancelTap: () => Navigator.pop(context)
+                    onCancelTap: () => pop(context)
                   );
                 },
                 child: Text("Mark as completed", style: TextStyle(fontSize: 18)),

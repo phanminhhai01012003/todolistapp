@@ -2,6 +2,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:todolistapp/common/commoncolor.dart';
+import 'package:todolistapp/common/routes.dart';
 import 'package:todolistapp/views/authentication/login/login.dart';
 import 'package:todolistapp/views/menu/home/home_page.dart';
 
@@ -25,10 +26,9 @@ class _SplashState extends State<Splash> {
       });
     });
     Future.delayed(Duration(seconds: 10), (){
-      Navigator.pushAndRemoveUntil(
+      pushAndRemoveUntil(
         context, 
-        MaterialPageRoute(builder: (context) => _auth != null ? HomePage() : Login()), 
-        (Route<dynamic> route) => false
+         _auth != null ? HomePage() : Login() 
       );
     });
   }

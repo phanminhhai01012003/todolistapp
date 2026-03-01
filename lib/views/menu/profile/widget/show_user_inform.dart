@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todolistapp/common/commoncolor.dart';
+import 'package:todolistapp/common/routes.dart';
 import 'package:todolistapp/models/user.dart';
 import 'package:todolistapp/services/firestore/user/user_services.dart';
 import 'package:todolistapp/views/menu/profile/details/user_detail.dart';
@@ -48,7 +49,7 @@ class _ShowUserInformState extends State<ShowUserInform> {
             itemBuilder: (context, index) {
               UserModel user = userList[index];
               return GestureDetector(
-                onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => UserDetail(user: user))),
+                onTap: () => push(context, UserDetail(user: user)),
                 child: Container(
                   padding: EdgeInsets.all(8),
                   decoration: BoxDecoration(

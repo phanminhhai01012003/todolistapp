@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:todolistapp/common/commoncolor.dart';
+import 'package:todolistapp/common/routes.dart';
 import 'package:todolistapp/models/todo.dart';
 import 'package:todolistapp/services/firestore/todo/todo_services.dart';
 import 'package:todolistapp/widget/info.dart';
@@ -20,8 +21,8 @@ class _CompletedTaskDetailState extends State<CompletedTaskDetail> {
   void delete(BuildContext context, String id) async{
     _service.deleteTask(id);
     Message.showMessage(context, "You have removed this task", Commoncolor.green);
-    Navigator.pop(context);
-    await Future.delayed(Duration(seconds: 2), ()=> Navigator.pop(context));
+    pop(context);
+    await Future.delayed(Duration(seconds: 2), ()=> pop(context));
   }
   @override
   Widget build(BuildContext context) {
@@ -33,7 +34,7 @@ class _CompletedTaskDetailState extends State<CompletedTaskDetail> {
         leading: Padding(
           padding: EdgeInsets.all(8),
           child: IconButton(
-            onPressed: () => Navigator.pop(context), 
+            onPressed: () => pop(context), 
             icon: Icon(Icons.arrow_back, size: 20)
           ),
         ),

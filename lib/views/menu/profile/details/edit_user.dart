@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:todolistapp/common/commoncolor.dart';
+import 'package:todolistapp/common/routes.dart';
 import 'package:todolistapp/models/user.dart';
 import 'package:todolistapp/services/firestore/user/user_services.dart';
 import 'package:todolistapp/services/storage/storage_services.dart';
@@ -50,7 +51,7 @@ class _EditUserState extends State<EditUser> {
       currUser.updateProfile(displayName: name, photoURL: imageURL);
       userDB.updateUser(user);
       Message.showMessage(context, "Update successful", Commoncolor.green);
-      Navigator.pop(context);
+      pop(context);
     } catch (e) {
       Message.showMessage(context, "Update failed", Commoncolor.red);
       print("Error: $e");
@@ -66,7 +67,7 @@ class _EditUserState extends State<EditUser> {
         leading: Padding(
           padding: EdgeInsets.all(12),
           child: IconButton(
-            onPressed: () => Navigator.pop(context), 
+            onPressed: () => pop(context), 
             icon: Icon(Icons.arrow_back, size: 20)
           ),
         ),

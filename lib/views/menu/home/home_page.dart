@@ -2,9 +2,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:todolistapp/common/commoncolor.dart';
+import 'package:todolistapp/common/routes.dart';
 import 'package:todolistapp/views/menu/home/completed_task.dart';
 import 'package:todolistapp/views/menu/home/progress_task.dart';
-import 'package:todolistapp/views/menu/profile/settings.dart';
+import 'package:todolistapp/views/menu/profile/settings/settings.dart';
 import 'package:todolistapp/views/menu/todo/add_edit.dart';
 
 class HomePage extends StatefulWidget {
@@ -68,7 +69,7 @@ class _HomePageState extends State<HomePage> {
           ),
           actions: [
             IconButton(
-              onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => Settings())), 
+              onPressed: () => push(context, Settings()), 
               icon: Icon(
                 Icons.settings, 
                 size: 20
@@ -154,7 +155,7 @@ class _HomePageState extends State<HomePage> {
         ),
         floatingActionButton: FloatingActionButton(
           backgroundColor: Commoncolor.blue,
-          onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => AddEdit(todo: null))),
+          onPressed: () => push(context, AddEdit(todo: null)),
           child: Icon(
             Icons.add, 
             size: 30, 

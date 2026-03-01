@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:todolistapp/common/commoncolor.dart';
+import 'package:todolistapp/common/routes.dart';
 import 'package:todolistapp/models/todo.dart';
 import 'package:todolistapp/services/firestore/todo/todo_services.dart';
 import 'package:todolistapp/widget/dialog.dart';
@@ -49,19 +50,19 @@ class _AddEditState extends State<AddEdit> {
               title: "Discard Changes", 
               content: "Do you want to back to home without any changes?", 
               onAcceptTap: () async{
-                Navigator.pop(context);
-                await Future.delayed(Duration(seconds: 1), () => Navigator.pop(context));
+                pop(context);
+                await Future.delayed(Duration(seconds: 1), () => pop(context));
               }, 
-              onCancelTap: () => Navigator.pop(context)
+              onCancelTap: () => pop(context)
             ) : ShowDialog.showCupertinoDialog(
               context, 
               title: "Discard Changes", 
               content: "Do you want to back to home without any changes?", 
               onAcceptTap: () async{
-                Navigator.pop(context);
-                await Future.delayed(Duration(seconds: 1), () => Navigator.pop(context));
+                pop(context);
+                await Future.delayed(Duration(seconds: 1), () => pop(context));
               }, 
-              onCancelTap: () => Navigator.pop(context)
+              onCancelTap: () => pop(context)
             );
           },
           icon: Icon(Icons.arrow_back_ios, size: 20),
@@ -238,6 +239,15 @@ class _AddEditState extends State<AddEdit> {
                         });
                       });
                       return;
+                    }
+                    if (dateController.text.isEmpty) {
+                      await Future.delayed(Duration(seconds: 2), (){
+                        Message.showMessage(context, "End date is required", Commoncolor.red);
+                        setState(() {
+                          isLoading = false;
+                        });
+                      });
+                      return;
                     }   
                     TodoModel todo = TodoModel(
                       todoId: widget.todo == null ? DateTime.now().millisecondsSinceEpoch.toString() : widget.todo!.todoId, 
@@ -253,7 +263,7 @@ class _AddEditState extends State<AddEdit> {
                       isLoading = false;
                     });
                     Message.showMessage(context, widget.todo == null ? "New task has been created" : "Task has been updated", Commoncolor.green);                 
-                    Navigator.pop(context);
+                    pop(context);
                   }, 
                   child: isLoading 
                   ? Center(child: CircularProgressIndicator(color: Commoncolor.white))

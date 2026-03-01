@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todolistapp/common/commoncolor.dart';
+import 'package:todolistapp/common/routes.dart';
 import 'package:todolistapp/models/user.dart';
 import 'package:todolistapp/views/menu/profile/details/edit_user.dart';
 import 'package:todolistapp/widget/info.dart';
@@ -24,7 +25,7 @@ class _UserDetailState extends State<UserDetail> {
         leading: Padding(
           padding: EdgeInsets.all(10),
           child: IconButton(
-            onPressed: () => Navigator.pop(context), 
+            onPressed: () => pop(context), 
             icon: Icon(Icons.arrow_back, size: 30)
           ),
         ),
@@ -76,7 +77,7 @@ class _UserDetailState extends State<UserDetail> {
                     backgroundColor: Commoncolor.yellow,
                     foregroundColor: Commoncolor.white
                   ),
-                  onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => EditUser(user: widget.user))),
+                  onPressed: () => push(context,EditUser(user: widget.user)),
                   child: Text("Edit Profile",
                     style: TextStyle(
                       fontSize: 18,

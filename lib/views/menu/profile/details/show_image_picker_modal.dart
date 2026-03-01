@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:todolistapp/common/commoncolor.dart';
+import 'package:todolistapp/common/routes.dart';
 import 'package:todolistapp/services/storage/storage_services.dart';
 
 Future<File?> showImagePickerModal(BuildContext context) async {
@@ -59,7 +60,7 @@ class _ShowImagePickerModalState extends State<ShowImagePickerModal> {
               onPressed: () async{
                 final picked = await imageService.pickImageFromCamera();
                 if (picked != null) {
-                  Navigator.pop(context, picked);
+                  pop(context, picked);
                 }
               }, 
               child: Text("Take a photo", style: TextStyle(fontSize: 16))
@@ -78,7 +79,7 @@ class _ShowImagePickerModalState extends State<ShowImagePickerModal> {
               onPressed: () async{
                 final picked = await imageService.pickImageFromGallery();
                 if (picked != null) {
-                  Navigator.pop(context, picked);
+                  pop(context, picked);
                 }
               }, 
               child: Text("Open from gallery", style: TextStyle(fontSize: 16))

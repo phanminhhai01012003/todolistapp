@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todolistapp/common/commoncolor.dart';
+import 'package:todolistapp/common/routes.dart';
 import 'package:todolistapp/views/authentication/login/login.dart';
 import 'package:todolistapp/views/authentication/register/handle_register.dart';
 import 'package:todolistapp/widget/message.dart';
@@ -229,6 +230,7 @@ class _RegisterState extends State<Register> {
                           setState(() {
                             isLoading = false;
                           });
+                          return;
                         }else{
                           setState(() {
                             isLoading = false;
@@ -257,7 +259,7 @@ class _RegisterState extends State<Register> {
                         ),
                       ),
                       TextButton(
-                        onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const Login())),
+                        onPressed: () => push(context, Login()),
                         child: Text(
                           "Login now!",
                           style: TextStyle(

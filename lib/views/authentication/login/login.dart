@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todolistapp/common/commoncolor.dart';
+import 'package:todolistapp/common/routes.dart';
 import 'package:todolistapp/views/authentication/forgotpassword/forgot_password.dart';
 import 'package:todolistapp/views/authentication/login/handle_login.dart';
 import 'package:todolistapp/views/authentication/register/register.dart';
@@ -122,7 +123,7 @@ class _LoginState extends State<Login> {
                 Align(
                   alignment: Alignment.centerRight,
                   child: TextButton(
-                    onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const ForgotPassword())),
+                    onPressed: () => push(context, ForgotPassword()),
                     child: Text("Forgot Password",
                       style: TextStyle(
                         color: Commoncolor.white,
@@ -185,7 +186,7 @@ class _LoginState extends State<Login> {
                         ),
                       ),
                       TextButton(
-                        onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const Register())),
+                        onPressed: () => push(context, Register()),
                         child: Text(
                           "Register now!",
                           style: TextStyle(

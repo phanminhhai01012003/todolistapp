@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:todolistapp/common/commoncolor.dart';
+import 'package:todolistapp/common/routes.dart';
 import 'package:todolistapp/views/authentication/changepassword/handle_change_password.dart';
 import 'package:todolistapp/widget/message.dart';
 
@@ -32,7 +33,7 @@ class _ChangePasswordState extends State<ChangePassword> {
           leading: Padding(
             padding: const EdgeInsets.all(12),
             child: GestureDetector(
-              onTap: () => Navigator.pop(context),
+              onTap: () => pop(context),
               child: Icon(Icons.arrow_back,
                 color: Commoncolor.white,
                 size: 30,
@@ -205,6 +206,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                             setState(() {
                               isLoading = false;
                             });
+                            return;
                           }
                           HandleChangePassword.handle(
                             context,
