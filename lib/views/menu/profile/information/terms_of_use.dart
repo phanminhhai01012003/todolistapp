@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:todolistapp/common/commoncolor.dart';
 import 'package:todolistapp/common/routes.dart';
 
-class PrivacyPolicy extends StatelessWidget {
-  const PrivacyPolicy({super.key});
+class TermsOfUse extends StatelessWidget {
+  const TermsOfUse({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -25,13 +25,13 @@ class _ProgressTaskDetailState extends State<ProgressTaskDetail> {
     _service.deleteTask(id);
     Message.showMessage(context, "You have removed this task", Commoncolor.green);
     pop(context);
-    await Future.delayed(Duration(seconds: 2), () => pop(context));
+    await Future.delayed(Duration(seconds: 1), () => pop(context));
   }
   void onCompletedTask() async{
     _service.updateTaskStatus(widget.todo.todoId, "Completed");
     Message.showMessage(context, "You have completed this task", Commoncolor.green);
     pop(context);
-    await Future.delayed(Duration(seconds: 2), () => pop(context));
+    await Future.delayed(Duration(seconds: 1), () => pop(context));
   }
   @override
   Widget build(BuildContext context) {

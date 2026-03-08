@@ -107,7 +107,7 @@ class _HomePageState extends State<HomePage> {
                         height: 50,
                         width: MediaQuery.of(context).size.width / 3,
                         decoration: BoxDecoration(
-                          color: selected == 0 ? Commoncolor.blue : Commoncolor.black,
+                          color: selected == 0 ? Commoncolor.yellow : Commoncolor.black,
                           borderRadius: BorderRadius.circular(22)
                         ),
                         child: Center(
@@ -131,7 +131,7 @@ class _HomePageState extends State<HomePage> {
                         height: 50,
                         width: MediaQuery.of(context).size.width / 3,
                         decoration: BoxDecoration(
-                          color: selected == 1 ? Commoncolor.blue : Commoncolor.black,
+                          color: selected == 1 ? Commoncolor.green : Commoncolor.black,
                           borderRadius: BorderRadius.circular(22)
                         ),
                         child: Center(

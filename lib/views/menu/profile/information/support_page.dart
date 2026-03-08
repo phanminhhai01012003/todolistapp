@@ -33,10 +33,20 @@ class _SupportPageState extends State<SupportPage> {
           ),
           centerTitle: true,
         ),
-        body: Center(
+        body: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Center(
+                child: Image.asset("assets/abyss.png",
+                  width: 200,
+                  height: 200,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              SizedBox(height: 20),
               Text(
                 "If anyone has any questions about this app, please contact via:",
                 style: TextStyle(
@@ -46,16 +56,13 @@ class _SupportPageState extends State<SupportPage> {
                 ),
               ),
               SizedBox(height: 10),
-              Padding(
-                padding: EdgeInsets.all(16),
-                child: Text(
-                  "Email: phanminhhai012003@gmail.com\n"
-                  "Zalo: 0984238803",
-                  style: TextStyle(
-                    color: Commoncolor.white,
-                    fontSize: 14,
-                    fontWeight: FontWeight.w700
-                  ),
+              Text(
+                "Email: phanminhhai012003@gmail.com\n"
+                "Zalo: 0984238803",
+                style: TextStyle(
+                  color: Commoncolor.white,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w700
                 ),
               ),
             ],

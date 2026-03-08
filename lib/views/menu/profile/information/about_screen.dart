@@ -42,20 +42,20 @@ class AboutScreen extends StatelessWidget {
                 "Abyss Plan",
                 style: TextStyle(
                   color: Commoncolor.white,
-                  fontSize: 16,
+                  fontSize: 18,
                   fontWeight: FontWeight.bold
                 ),
               ),
               SizedBox(height: 10),
               Padding(
-                padding: EdgeInsets.all(16),
+                padding: EdgeInsets.symmetric(horizontal: 16),
                 child: Text(
-                  "App to do list that users can manage their"
-                  "daily works via tasks that they need to do"
-                  "and can finish those tasks as soon as possible",
+                  "App to do list that users can manage their "
+                  "daily works through tasks that they need to do "
+                  "and they can finish those tasks as soon as possible",
                   style: TextStyle(
                     color: Commoncolor.white,
-                    fontSize: 14,
+                    fontSize: 16,
                     fontWeight: FontWeight.w700
                   ),
                 ),
@@ -65,8 +65,8 @@ class AboutScreen extends StatelessWidget {
                 "Version: 1.0.0",
                 style: TextStyle(
                   color: Commoncolor.white,
-                  fontSize: 12,
-                  fontWeight: FontWeight.w500
+                  fontSize: 14,
+                  fontWeight: FontWeight.w700
                 ),
               ),
             ],

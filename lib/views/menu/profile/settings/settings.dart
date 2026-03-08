@@ -6,6 +6,7 @@ import 'package:todolistapp/common/routes.dart';
 import 'package:todolistapp/services/auth/auth_services.dart';
 import 'package:todolistapp/views/authentication/changepassword/change_password.dart';
 import 'package:todolistapp/views/authentication/login/login.dart';
+import 'package:todolistapp/views/menu/profile/settings/app_information.dart';
 import 'package:todolistapp/views/menu/profile/widget/show_user_inform.dart';
 import 'package:todolistapp/widget/dialog.dart';
 import 'package:todolistapp/widget/message.dart';
@@ -82,7 +83,7 @@ class _SettingsState extends State<Settings> {
                   foregroundColor: Commoncolor.white
                 ),
                 onPressed: () {
-                  
+                  push(context, AppInformation());
                 },
                 child: Text("App Information",
                   style: TextStyle(

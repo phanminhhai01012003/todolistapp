@@ -22,7 +22,7 @@ class _CompletedTaskDetailState extends State<CompletedTaskDetail> {
     _service.deleteTask(id);
     Message.showMessage(context, "You have removed this task", Commoncolor.green);
     pop(context);
-    await Future.delayed(Duration(seconds: 2), ()=> pop(context));
+    await Future.delayed(Duration(seconds: 1), ()=> pop(context));
   }
   @override
   Widget build(BuildContext context) {

@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:todolistapp/common/commoncolor.dart';
 import 'package:todolistapp/common/routes.dart';
+import 'package:todolistapp/views/menu/profile/information/about_screen.dart';
+import 'package:todolistapp/views/menu/profile/information/privacy_policy.dart';
+import 'package:todolistapp/views/menu/profile/information/support_page.dart';
+import 'package:todolistapp/views/menu/profile/information/terms_of_use.dart';
 import 'package:todolistapp/views/menu/profile/widget/mode_select.dart';
 
 class AppInformation extends StatefulWidget {
@@ -14,6 +18,7 @@ class _AppInformationState extends State<AppInformation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Commoncolor.black,
       appBar: AppBar(
         backgroundColor: Commoncolor.black,
         foregroundColor: Commoncolor.white,
@@ -34,25 +39,25 @@ class _AppInformationState extends State<AppInformation> {
             ModeSelect(
               icon: Icons.info_outline,
               title: "About", 
-              onTap: (){}
+              onTap: () => push(context, AboutScreen())
             ),
             SizedBox(height: 5),
             ModeSelect(
               icon: Icons.rule,
               title: "Terms of use", 
-              onTap: (){}
+              onTap: () => push(context, TermsOfUse())
             ),
             SizedBox(height: 5),
             ModeSelect(
               icon: Icons.privacy_tip,
               title: "Privacy policy", 
-              onTap: (){}
+              onTap: () => push(context, PrivacyPolicy())
             ),
             SizedBox(height: 5),
             ModeSelect(
               icon: Icons.help,
               title: "Support", 
-              onTap: (){}
+              onTap: () => push(context, SupportPage())
             )
           ],
         ),
