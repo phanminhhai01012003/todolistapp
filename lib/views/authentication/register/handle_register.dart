@@ -26,6 +26,7 @@ class HandleRegister {
       pushAndRemoveUntil(context, HomePage());
     }else{
       Message.showMessage(context, "Register failed!", Commoncolor.red);
+      return;
     }
   }
 }

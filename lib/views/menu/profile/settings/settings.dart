@@ -57,28 +57,6 @@ class _SettingsState extends State<Settings> {
               width: (MediaQuery.of(context).size.width * 0.75).w,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Commoncolor.yellow,
-                  foregroundColor: Commoncolor.white
-                ),
-                onPressed: () {
-                  push(context, ChangePassword());
-                },
-                child: Text("Change Password",
-                  style: TextStyle(
-                    fontSize: 18.sp,
-                    fontWeight: FontWeight.w900
-                  ),
-                ),
-              ),
-            ),
-          ),
-          SizedBox(height: 15),
-          Center(
-            child: SizedBox(
-              height: 50.h,
-              width: (MediaQuery.of(context).size.width * 0.75).w,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
                   backgroundColor: Commoncolor.green,
                   foregroundColor: Commoncolor.white
                 ),
@@ -101,17 +79,39 @@ class _SettingsState extends State<Settings> {
               width: (MediaQuery.of(context).size.width * 0.75).w,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
+                  backgroundColor: Commoncolor.yellow,
+                  foregroundColor: Commoncolor.white
+                ),
+                onPressed: () {
+                  push(context, ChangePassword());
+                },
+                child: Text("Change Password",
+                  style: TextStyle(
+                    fontSize: 18.sp,
+                    fontWeight: FontWeight.w900
+                  ),
+                ),
+              ),
+            ),
+          ),
+          SizedBox(height: 15),
+          Center(
+            child: SizedBox(
+              height: 50.h,
+              width: (MediaQuery.of(context).size.width * 0.75).w,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
                   backgroundColor: Commoncolor.red,
                   foregroundColor: Commoncolor.white
                 ),
                 onPressed: () {
-                  Platform.isAndroid ? ShowDialog.showMaterialDialog(
+                  Platform.isAndroid ? ShowDialog.materialDialog(
                     context, 
                     title: "Log out", 
                     content: "Do you want to log out?", 
                     onAcceptTap: () => handleLogout(context), 
                     onCancelTap: () => pop(context)
-                  ) : ShowDialog.showCupertinoDialog(
+                  ) : ShowDialog.cupertinoDialog(
                     context, 
                     title: "Log out", 
                     content: "Do you want to log out?", 

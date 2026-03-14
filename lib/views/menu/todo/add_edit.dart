@@ -45,7 +45,7 @@ class _AddEditState extends State<AddEdit> {
         foregroundColor: Commoncolor.white,
         leading: IconButton(
           onPressed: () {
-            Platform.isAndroid ? ShowDialog.showMaterialDialog(
+            Platform.isAndroid ? ShowDialog.materialDialog(
               context, 
               title: "Discard Changes", 
               content: "Do you want to back to home without any changes?", 
@@ -54,7 +54,7 @@ class _AddEditState extends State<AddEdit> {
                 await Future.delayed(Duration(seconds: 1), () => pop(context));
               }, 
               onCancelTap: () => pop(context)
-            ) : ShowDialog.showCupertinoDialog(
+            ) : ShowDialog.cupertinoDialog(
               context, 
               title: "Discard Changes", 
               content: "Do you want to back to home without any changes?", 

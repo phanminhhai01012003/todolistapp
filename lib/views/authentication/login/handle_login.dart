@@ -13,6 +13,8 @@ class HandleLogin {
     if (user != null){
       Message.showMessage(context, "Login successful!", Commoncolor.green);
       pushAndRemoveUntil(context, HomePage());
+    } else {
+      Message.showMessage(context, "Login Failed!", Commoncolor.red);
     }
   }
 }

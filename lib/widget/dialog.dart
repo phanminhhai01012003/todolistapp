@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todolistapp/common/commoncolor.dart';
 
 class ShowDialog {
-  static void showMaterialDialog(BuildContext context, {
+  static void materialDialog(BuildContext context, {
     required String title,
     required String content,
     required VoidCallback onAcceptTap,
@@ -47,13 +47,13 @@ class ShowDialog {
       )
     );
   }
-  static void showCupertinoDialog(BuildContext context, {
+  static void cupertinoDialog(BuildContext context, {
     required String title,
     required String content,
     required VoidCallback onAcceptTap,
     required VoidCallback onCancelTap
   }){
-    showDialog(
+    showCupertinoDialog(
       context: context, 
       builder: (context) => CupertinoAlertDialog(
         title: Text(title,

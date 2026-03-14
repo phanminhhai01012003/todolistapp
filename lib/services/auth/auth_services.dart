@@ -9,7 +9,7 @@ class AuthServices extends AuthRepo{
   @override
   Future<void> changePassword(BuildContext context, {email, oldpassword, newPassword}) async{
     // TODO: implement changePassword
-    var cred = EmailAuthProvider.credential(email: email, password: oldpassword);
+    var cred = EmailAuthProvider.credential(email: email.toString(), password: oldpassword.toString());
     await _auth.currentUser!.reauthenticateWithCredential(cred).then((value){
       _auth.currentUser!.updatePassword(newPassword);
     }).catchError((e){

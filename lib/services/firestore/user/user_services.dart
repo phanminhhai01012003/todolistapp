@@ -18,9 +18,15 @@ class UserServices extends UserRepo{
   }
 
   @override
-  Future<void> deleteUser(String id) {
+  Future<void> deleteUser(String id) async{
     // TODO: implement deleteUser
-    throw UnimplementedError();
+    try {
+      await userCollection.doc(id).delete();
+      await user!.delete();
+    } catch (e) {
+      print("Error: $e");
+      rethrow;
+    }
   }
 
   @override

@@ -153,13 +153,13 @@ class _ProgressTaskDetailState extends State<ProgressTaskDetail> {
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(33))
                 ),
                 onPressed: () {
-                  Platform.isAndroid ? ShowDialog.showMaterialDialog(
+                  Platform.isAndroid ? ShowDialog.materialDialog(
                     context, 
                     title: "Delete Task", 
                     content: "Are you sure to delete this task?", 
                     onAcceptTap: () => delete(context, widget.todo.todoId), 
                     onCancelTap: () => pop(context)
-                  ) : ShowDialog.showCupertinoDialog(
+                  ) : ShowDialog.cupertinoDialog(
                     context, 
                     title: "Delete Task", 
                     content: "Are you sure to delete this task?", 
@@ -181,13 +181,13 @@ class _ProgressTaskDetailState extends State<ProgressTaskDetail> {
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(33))
                 ),
                 onPressed: () {
-                  Platform.isAndroid ? ShowDialog.showMaterialDialog(
+                  Platform.isAndroid ? ShowDialog.materialDialog(
                     context, 
                     title: "Mark as completed", 
                     content: "Are you sure that you have completed this task?", 
                     onAcceptTap: onCompletedTask, 
                     onCancelTap: () => pop(context)
-                  ) : ShowDialog.showCupertinoDialog(
+                  ) : ShowDialog.cupertinoDialog(
                     context, 
                     title: "Mark as completed", 
                     content: "Are you sure that you have completed this task?", 
