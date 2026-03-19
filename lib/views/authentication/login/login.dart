@@ -23,6 +23,19 @@ class _LoginState extends State<Login> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Commoncolor.black,
+        appBar: AppBar(
+          backgroundColor: Commoncolor.black,
+          foregroundColor: Commoncolor.white,
+          leading: Padding(
+            padding: EdgeInsets.all(8),
+            child: IconButton(
+              onPressed: () => pop(context), 
+              icon: Icon(Icons.arrow_back, size: 20)
+            ),
+          ),
+          title: Text("Login"),
+          centerTitle: true,
+        ),
         body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
@@ -33,7 +46,7 @@ class _LoginState extends State<Login> {
                 Text("Welcome back to AbyssPlan!",
                   style: TextStyle(
                     color: Commoncolor.white,
-                    fontSize: 30,
+                    fontSize: 20,
                     fontWeight: FontWeight.bold
                   ),
                 ),
@@ -41,7 +54,7 @@ class _LoginState extends State<Login> {
                 Text("Please login to use my service",
                   style: TextStyle(
                     color: Commoncolor.white,
-                    fontSize: 20,
+                    fontSize: 18,
                     fontWeight: FontWeight.w900
                   ),
                 ),
@@ -64,7 +77,11 @@ class _LoginState extends State<Login> {
                       width: 20,
                       child: Icon(Icons.email, color: Commoncolor.grey),
                     ),
-                    border: OutlineInputBorder(
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(33),
+                      borderSide: BorderSide(color: Commoncolor.white)
+                    ),
+                    focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(33),
                       borderSide: BorderSide(color: Commoncolor.white)
                     ),
@@ -96,7 +113,11 @@ class _LoginState extends State<Login> {
                       width: 20,
                       child: Icon(Icons.lock, color: Commoncolor.grey),
                     ),
-                    border: OutlineInputBorder(
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(33),
+                      borderSide: BorderSide(color: Commoncolor.white)
+                    ),
+                    focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(33),
                       borderSide: BorderSide(color: Commoncolor.white)
                     ),

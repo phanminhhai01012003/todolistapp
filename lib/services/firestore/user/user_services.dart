@@ -40,10 +40,10 @@ class UserServices extends UserRepo{
     }
   }
 
-  Stream<List<UserModel>> get getUser {
+  Stream<List<UserModel>> getUser(String id) {
     try {
       return userCollection
-        .where("userId", isEqualTo: user!.uid)
+        .where("userId", isEqualTo: id)
         .snapshots()
         .map((event) => event.docs.map((doc) => UserModel.fromJson(doc.data())).toList());
     } catch (e) {

@@ -16,7 +16,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final currUser = FirebaseAuth.instance.currentUser!;
+  final currUser = FirebaseAuth.instance.currentUser;
+  String defaultAvatar = "https://openclipart.org/image/2000px/247319";
   int selected = 0;
   bool isGrid = false;
   @override
@@ -38,7 +39,8 @@ class _HomePageState extends State<HomePage> {
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(50),
-                  child: Image.network("${currUser.photoURL}",
+                  child: Image.network(
+                    currUser == null ? defaultAvatar : "${currUser!.photoURL}",
                     fit: BoxFit.cover,
                     width: 50,
                     height: 50,
@@ -49,7 +51,7 @@ class _HomePageState extends State<HomePage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Welcome back, ${currUser.displayName}", 
+                      "Welcome back, ${currUser == null ? "Guest" : currUser!.displayName}", 
                       style: TextStyle(
                         fontSize: 16, 
                         fontWeight: FontWeight.w700

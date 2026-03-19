@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:todolistapp/common/commoncolor.dart';
 import 'package:todolistapp/common/routes.dart';
@@ -14,10 +15,11 @@ class ShowUserInform extends StatefulWidget {
 
 class _ShowUserInformState extends State<ShowUserInform> {
   final services = UserServices();
+  final currentUser = FirebaseAuth.instance.currentUser;
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
-      stream: services.getUser, 
+      stream: services.getUser(currentUser!.uid), 
       builder: (context, snapshot){
         if (!snapshot.hasData || snapshot.hasError){
           return Center(
@@ -49,7 +51,9 @@ class _ShowUserInformState extends State<ShowUserInform> {
             itemBuilder: (context, index) {
               UserModel user = userList[index];
               return GestureDetector(
-                onTap: () => push(context, UserDetail(user: user)),
+                onTap: () {
+                  push(context, UserDetail(user: user));
+                },
                 child: Container(
                   padding: EdgeInsets.all(8),
                   decoration: BoxDecoration(
@@ -62,7 +66,8 @@ class _ShowUserInformState extends State<ShowUserInform> {
                     children: [
                       ClipRRect(
                         borderRadius: BorderRadius.circular(50),
-                        child: Image.network(user.avatar,
+                        child: Image.network(
+                          user.avatar,
                           fit: BoxFit.cover,
                           width: 50,
                           height: 50,
@@ -73,14 +78,16 @@ class _ShowUserInformState extends State<ShowUserInform> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(user.username,
+                          Text(
+                            user.username,
                             style: TextStyle(
                               color: Commoncolor.white,
                               fontSize: 18,
                               fontWeight: FontWeight.w700
                             ),
                           ),
-                          Text(user.email,
+                          Text(
+                            user.email,
                             style: TextStyle(
                               color: Commoncolor.white,
                               fontSize: 14,

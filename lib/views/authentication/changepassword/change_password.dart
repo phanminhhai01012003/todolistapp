@@ -68,7 +68,11 @@ class _ChangePasswordState extends State<ChangePassword> {
                         width: 20,
                         child: Icon(Icons.lock, color: Commoncolor.grey),
                       ),
-                      border: OutlineInputBorder(
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(33),
+                        borderSide: BorderSide(color: Commoncolor.white)
+                      ),
+                      focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(33),
                         borderSide: BorderSide(color: Commoncolor.white)
                       ),
@@ -92,7 +96,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                     ),
                   ),
                   SizedBox(height: 20),
-                Text("New password",
+                  Text("New password",
                     style: TextStyle(
                       color: Commoncolor.white,
                       fontSize: 16,
@@ -111,7 +115,11 @@ class _ChangePasswordState extends State<ChangePassword> {
                         width: 20,
                         child: Icon(Icons.lock, color: Commoncolor.grey),
                       ),
-                      border: OutlineInputBorder(
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(33),
+                        borderSide: BorderSide(color: Commoncolor.white)
+                      ),
+                      focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(33),
                         borderSide: BorderSide(color: Commoncolor.white)
                       ),
@@ -154,7 +162,11 @@ class _ChangePasswordState extends State<ChangePassword> {
                         width: 20,
                         child: Icon(Icons.lock, color: Commoncolor.grey),
                       ),
-                      border: OutlineInputBorder(
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(33),
+                        borderSide: BorderSide(color: Commoncolor.white)
+                      ),
+                      focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(33),
                         borderSide: BorderSide(color: Commoncolor.white)
                       ),
