@@ -10,6 +10,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:todolistapp/common/common_theme.dart';
 import 'package:todolistapp/firebase_options.dart';
+import 'package:todolistapp/services/notification/notification_services.dart';
 import 'package:todolistapp/views/splash_screen/splash.dart';
 
 void main() async{
@@ -18,6 +19,8 @@ void main() async{
   Directory document = await getApplicationDocumentsDirectory();
   await Hive.initFlutter(document.path);
   await Hive.openBox("tasks_box");
+  await Hive.openBox("app_settings");
+  await NotificationServices.initNotifications();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   // ignore: deprecated_member_use
   CloudinaryContext.cloudinary = Cloudinary.fromCloudName(cloudName: dotenv.env['CLOUD_NAME']!);

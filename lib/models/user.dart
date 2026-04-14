@@ -4,19 +4,22 @@ class UserModel{
   final String username;
   final String description;
   final String email;
+  final String? token;
   UserModel({
     required this.userId,
     required this.avatar,
     required this.description,
     required this.username,
-    required this.email
+    required this.email,
+    this.token
   });
   Map<String, dynamic> toJson() => {
     "userId": userId,
     "avatar": avatar,
     "username": username,
     "description": description,
-    "email": email
+    "email": email,
+    "token": token
   };
   factory UserModel.fromJson(Map<String, dynamic> data){
     return UserModel(
@@ -25,6 +28,7 @@ class UserModel{
       username: data['username'] ?? '', 
       description: data['description'] ?? '',
       email: data['email'] ?? '', 
+      token: data['token'] ?? '',
     );
   }
   Map<String, dynamic> updateJson() => {

@@ -14,6 +14,7 @@ class AuthServices extends AuthRepo{
       _auth.currentUser!.updatePassword(newPassword);
     }).catchError((e){
       Message.showMessage(context, "Change Password Failed!", Commoncolor.red);
+      print(e);
     });
   }
 
@@ -26,6 +27,7 @@ class AuthServices extends AuthRepo{
       return user;
     }catch(e){
       Message.showMessage(context, "Login Failed!", Commoncolor.red);
+      print(e);
       return null;
     }
   }
@@ -40,6 +42,7 @@ class AuthServices extends AuthRepo{
       return user;
     }catch(e){
       Message.showMessage(context, "Register Failed!", Commoncolor.red);
+      print(e);
       return null;
     }
   }
@@ -51,6 +54,8 @@ class AuthServices extends AuthRepo{
       await _auth.sendPasswordResetEmail(email: email);
     }catch(e){
       Message.showMessage(context, "An error has been occurred!", Commoncolor.red);
+      print(e);
+      rethrow;
     }
   }
   
@@ -61,6 +66,8 @@ class AuthServices extends AuthRepo{
       await _auth.signOut();
     }catch(e){
       Message.showMessage(context, "Logout failed!", Commoncolor.red);
+      print(e);
+      rethrow;
     }
   }
 

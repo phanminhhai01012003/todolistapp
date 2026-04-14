@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:todolistapp/common/commoncolor.dart';
 import 'package:todolistapp/common/routes.dart';
 import 'package:todolistapp/models/user.dart';
@@ -13,7 +14,9 @@ class HandleRegister {
   static final _auth = AuthServices();
   static final todos = TodoServices();
   static final services = UserServices();
+  static final appBox = Hive.box("app_settings");
   static void handle(BuildContext context, String avatar, String username, String email, String password) async{
+    String deviceToken = appBox.get("token", defaultValue: "");
     User? user = await _auth.register(context, avatar, username, email, password);
     if (user != null) {
       UserModel userModel = UserModel(
@@ -22,6 +25,7 @@ class HandleRegister {
         description: "", 
         username: username, 
         email: email,
+        token: deviceToken
       );
       await services.addUser(userModel);
       await todos.syncLocalTaskToFirestore();

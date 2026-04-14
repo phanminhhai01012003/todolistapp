@@ -5,8 +5,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:todolistapp/common/commoncolor.dart';
 import 'package:todolistapp/common/routes.dart';
+import 'package:todolistapp/common/utils.dart';
 import 'package:todolistapp/models/todo.dart';
 import 'package:todolistapp/services/firestore/todo/todo_services.dart';
+import 'package:todolistapp/services/notification/notification_services.dart';
 import 'package:todolistapp/widget/dialog.dart';
 import 'package:todolistapp/widget/message.dart';
 
@@ -250,7 +252,7 @@ class _AddEditState extends State<AddEdit> {
                       return;
                     }   
                     TodoModel todo = TodoModel(
-                      todoId: widget.todo == null ? DateTime.now().millisecondsSinceEpoch.toString() : widget.todo!.todoId, 
+                      todoId: widget.todo == null ? generateRandomString(15) : widget.todo!.todoId, 
                       userId: widget.todo == null ? _currentUser.uid : widget.todo!.userId, 
                       title: titleController.text, 
                       description: descriptionController.text, 
@@ -262,7 +264,8 @@ class _AddEditState extends State<AddEdit> {
                     setState(() {
                       isLoading = false;
                     });
-                    Message.showMessage(context, widget.todo == null ? "New task has been created" : "Task has been updated", Commoncolor.green);                 
+                    Message.showMessage(context, widget.todo == null ? "New task has been created" : "Task has been updated", Commoncolor.green);
+                    // scheduleTask(todo);           
                     pop(context);
                   }, 
                   child: isLoading 
@@ -279,6 +282,16 @@ class _AddEditState extends State<AddEdit> {
           ],
         ),
       ),
+    );
+  }
+  void scheduleTask(TodoModel todo) async{
+    DateTime endDate = todo.endDate;
+    DateTime scheduleDate = endDate.subtract(Duration(hours: 2));
+    if (scheduleDate.isBefore(DateTime.now())) return;
+    NotificationServices.scheduleNotification(
+      title: "Nhiệm vụ sắp hết hạn", 
+      body: "Nhiệm vụ ${todo.title} của bạn sẽ hết hạn vào $endDate, hãy nhanh chóng hoàn thành sớm nhất có thể", 
+      time: scheduleDate
     );
   }
 }
