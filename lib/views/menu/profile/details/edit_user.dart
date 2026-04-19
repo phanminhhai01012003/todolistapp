@@ -223,6 +223,8 @@ class _EditUserState extends State<EditUser> {
                     setState(() {
                       isLoading = true;
                     });
+                    await Future.delayed(Duration(seconds: 2));
+                    if (isLoading) return;
                     if (name.isEmpty) {
                       Message.showMessage(context, "Name is required", Commoncolor.red);
                       setState(() {

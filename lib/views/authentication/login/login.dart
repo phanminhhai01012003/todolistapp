@@ -168,7 +168,7 @@ class _LoginState extends State<Login> {
                         borderRadius: BorderRadius.circular(33),
                       ),
                     ),
-                    onPressed: () {
+                    onPressed: () async{
                       var email = emailController.text;
                       var password = passwordController.text;
                       if (disableButton) {
@@ -177,6 +177,8 @@ class _LoginState extends State<Login> {
                         setState(() {
                           isLoading = true;
                         });
+                        await Future.delayed(Duration(seconds: 2));
+                        if (isLoading) return;
                         HandleLogin.handle(context, email, password);
                         setState(() {
                           isLoading = false;

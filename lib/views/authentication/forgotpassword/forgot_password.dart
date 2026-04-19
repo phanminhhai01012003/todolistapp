@@ -94,14 +94,16 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                         borderRadius: BorderRadius.circular(33),
                       ),
                     ),
-                    onPressed: () {
+                    onPressed: () async{
                       var email = emailController.text;
                       if (disableButton) {
                         return;
-                      } else {
+                      } else {                        
                         setState(() {
                           isLoading = true;
                         });
+                        await Future.delayed(Duration(seconds: 2));
+                        if (isLoading) return;
                         HandleForgotPassword.handle(context, email);
                         setState(() {
                           isLoading = false;

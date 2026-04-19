@@ -242,7 +242,7 @@ class _RegisterState extends State<Register> {
                         borderRadius: BorderRadius.circular(33),
                       ),
                     ),
-                    onPressed: () {
+                    onPressed: () async{
                       var avatar = "https://openclipart.org/image/2000px/247319";
                       var name = nameController.text;
                       var email = emailController.text;
@@ -254,6 +254,8 @@ class _RegisterState extends State<Register> {
                         setState(() {
                           isLoading = true;
                         });
+                        await Future.delayed(Duration(seconds: 2));
+                        if (isLoading) return;
                         if (password != confirm){
                           Message.showMessage(context, "Password do not match", Commoncolor.red);
                           setState(() {

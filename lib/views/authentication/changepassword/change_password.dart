@@ -213,6 +213,8 @@ class _ChangePasswordState extends State<ChangePassword> {
                           setState(() {
                             isLoading = true;
                           });
+                          await Future.delayed(Duration(seconds: 2));
+                          if (isLoading) return;
                           if (newPassword != confirmPassword) {
                             Message.showMessage(context, "Confirm password does not match!", Commoncolor.red);
                             setState(() {

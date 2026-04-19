@@ -233,21 +233,19 @@ class _AddEditState extends State<AddEdit> {
                     setState(() {
                       isLoading = true;
                     });
+                    await Future.delayed(Duration(seconds: 2));
+                    if (isLoading) return;
                     if (titleController.text.isEmpty) {
-                      await Future.delayed(Duration(seconds: 2), (){
-                        Message.showMessage(context, "Task title is required", Commoncolor.red);
-                        setState(() {
-                          isLoading = false;
-                        });
+                      Message.showMessage(context, "Task title is required", Commoncolor.red);
+                      setState(() {
+                        isLoading = false;
                       });
                       return;
                     }
                     if (dateController.text.isEmpty) {
-                      await Future.delayed(Duration(seconds: 2), (){
-                        Message.showMessage(context, "End date is required", Commoncolor.red);
-                        setState(() {
-                          isLoading = false;
-                        });
+                      Message.showMessage(context, "End date is required", Commoncolor.red);
+                      setState(() {
+                        isLoading = false;
                       });
                       return;
                     }   
